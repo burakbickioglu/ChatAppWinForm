@@ -76,6 +76,7 @@ namespace ChatApp
             // 
             this.txtLocalIp.Location = new System.Drawing.Point(120, 38);
             this.txtLocalIp.Name = "txtLocalIp";
+            this.txtLocalIp.ReadOnly = true;
             this.txtLocalIp.Size = new System.Drawing.Size(208, 38);
             this.txtLocalIp.TabIndex = 2;
             // 
@@ -116,7 +117,6 @@ namespace ChatApp
             this.txtRemotePort.Name = "txtRemotePort";
             this.txtRemotePort.Size = new System.Drawing.Size(208, 38);
             this.txtRemotePort.TabIndex = 2;
-            //this.txtRemotePort.TextChanged += new System.EventHandler(this.txtRemotePort_TextChanged);
             // 
             // txtRemoteIp
             // 
@@ -158,7 +158,7 @@ namespace ChatApp
             this.txtMessage.Location = new System.Drawing.Point(145, 395);
             this.txtMessage.Name = "txtMessage";
             this.txtMessage.Size = new System.Drawing.Size(632, 38);
-            this.txtMessage.TabIndex = 3;
+            this.txtMessage.TabIndex = 4;
             // 
             // listMessages
             // 
@@ -184,7 +184,7 @@ namespace ChatApp
             this.txtPassword.Location = new System.Drawing.Point(145, 456);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(632, 38);
-            this.txtPassword.TabIndex = 4;
+            this.txtPassword.TabIndex = 5;
             // 
             // label5
             // 
@@ -214,7 +214,8 @@ namespace ChatApp
             this.cmbAlgoritm.Location = new System.Drawing.Point(797, 398);
             this.cmbAlgoritm.Name = "cmbAlgoritm";
             this.cmbAlgoritm.Size = new System.Drawing.Size(149, 39);
-            this.cmbAlgoritm.TabIndex = 5;
+            this.cmbAlgoritm.TabIndex = 6;
+            //this.cmbAlgoritm.SelectedIndexChanged += new System.EventHandler(this.cmbAlgoritm_SelectedIndexChanged);
             // 
             // btnEnterPassword
             // 
@@ -222,7 +223,7 @@ namespace ChatApp
             this.btnEnterPassword.Location = new System.Drawing.Point(797, 456);
             this.btnEnterPassword.Name = "btnEnterPassword";
             this.btnEnterPassword.Size = new System.Drawing.Size(150, 40);
-            this.btnEnterPassword.TabIndex = 10;
+            this.btnEnterPassword.TabIndex = 7;
             this.btnEnterPassword.Text = "Enter Password";
             this.btnEnterPassword.UseVisualStyleBackColor = true;
             this.btnEnterPassword.Click += new System.EventHandler(this.btnEnterPassword_Click);

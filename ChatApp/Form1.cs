@@ -36,10 +36,13 @@ namespace ChatApp
             // get user ip
             txtLocalIp.Text = GetLocalIp();
             txtRemoteIp.Text = GetLocalIp();
-            txtLocalIp.Enabled = false;
+            
 
             btnEnterPassword.Hide();
-            
+
+            ControlComponents(false);
+
+
         }
 
         private void btnConnect_Click(object sender, EventArgs e)
@@ -67,6 +70,7 @@ namespace ChatApp
                         new AsyncCallback(MessageCallBack), buffer);
 
                     btnConnect.Enabled = false;
+                    ControlComponents(true);
                 }
                 else
                 {
@@ -120,19 +124,24 @@ namespace ChatApp
                     listMessages.Items.Add("Me: " + txtMessage.Text);
                     txtMessage.Text = "";
                     txtPassword.Text = "";
+                    
 
                     ButtonCheck();
+                    cmbAlgoritm.SelectedIndex = -1;
+
 
                 }
                 else
                 {
-                    MessageBox.Show("Please choose an encryption algorithm");
+                    MessageBox.Show("Please enter all fields");
                 }
 
             }
             catch (Exception exception)
             {
                 MessageBox.Show(exception.Message);
+                listMessages.Items.Clear();
+                
             }
         }
 
@@ -154,7 +163,7 @@ namespace ChatApp
                 algorithmType = post[0];
                 message = post[1];
                 senderPassword = post[2];
-
+                cmbAlgoritm.Text = post[0];
 
                 //MessageBox.Show(senderPassword);
                 buffer = new byte[1500];
@@ -194,22 +203,25 @@ namespace ChatApp
 
                 if (senderPassword.Contains(password))
                 {
-                    MessageBox.Show("Şifre doğru");
+                    MessageBox.Show("Password is correct");
                     listMessages.Items[^1] = "Friend: " + algorithmType + "-" + message;
                     btnEnterPassword.Hide();
                     btnSend.Show();
                     txtMessage.Enabled = true;
                     txtPassword.Text = "";
                     //ButtonCheck();
+                    cmbAlgoritm.SelectedIndex = -1;
+
+
                 }
                 else
                 {
-                    MessageBox.Show("Şifre yanlış");
+                    MessageBox.Show("Password is not correct. Try again.");
                 }
             }
             else
             {
-                MessageBox.Show("Şifre giriniz");
+                MessageBox.Show("Please enter password");
             }
         }
 
@@ -232,6 +244,16 @@ namespace ChatApp
                 txtMessage.Enabled = true;
             }
 
+        }
+        
+        private void ControlComponents(bool value)
+        {
+            txtPassword.Enabled = value;
+            txtMessage.Enabled = value;
+            cmbAlgoritm.Enabled = value;
+            listMessages.Enabled = value;
+            btnEnterPassword.Enabled = value;
+            btnSend.Enabled = value;
         }
     }
 }
